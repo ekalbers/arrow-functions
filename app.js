@@ -161,11 +161,11 @@ let Student = function (name, age, hometown) {
 };
 
 //attempted arrow function
-/* let Student = (name, age, hometown) => {
-  this.name = name;
-  this.age = age;
-  this.hometown = hometown;
-}; */
+/* let Student = (name, age, hometown) => ({
+  name: name,
+  age: age,
+  hometown: hometown,
+}); */
 
 let joe = new Student('Joe Schmoe', 100, 'Anytown, USA');
 
@@ -181,20 +181,25 @@ Student.prototype.greeting = function () {
   return `Hi, my name is ${this.name}`;
 };
 
+//Attempted arrow function
+//Student.prototype.greeting = () => `Hi, my name is ${this.name}`;
+
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
 
 
-Student.courseName = function () {
+/* Student.courseName = function () {
   return 'This student is enrolled in Code 301.';
-};
+}; */
+
+Student.courseName = () => 'This student is enrolled in Code 301.';
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(Student.courseName());
+console.log(Student.courseName());
 
 
 
@@ -205,17 +210,17 @@ Student.prototype.scope = function () {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scope();
+joe.scope();
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scopeArrow();
+joe.scopeArrow();
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+//    'this' refers to the instance of the object which in this case is 'joe'
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//    'this' would be undefined.
 // 3. Explain why "this" is different when an arrow function is used.
-//
+//    'this' is different because arrow functions do not have a binding for 'this'
